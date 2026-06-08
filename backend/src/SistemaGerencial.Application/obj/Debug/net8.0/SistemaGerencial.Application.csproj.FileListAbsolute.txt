@@ -13,3 +13,4 @@ E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\
 E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\refint\SistemaGerencial.Application.dll
 E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\SistemaGerencial.Application.pdb
 E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\ref\SistemaGerencial.Application.dll
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\SistemaGerencial.Application.sourcelink.json

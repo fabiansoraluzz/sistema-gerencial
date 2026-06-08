@@ -155,3 +155,4 @@ E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Api\obj\Debug\ne
 E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Api\obj\Debug\net8.0\SistemaGerencial.Api.pdb
 E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Api\obj\Debug\net8.0\SistemaGerencial.Api.genruntimeconfig.cache
 E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Api\obj\Debug\net8.0\ref\SistemaGerencial.Api.dll
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Api\obj\Debug\net8.0\SistemaGerencial.Api.sourcelink.json

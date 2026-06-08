@@ -27,9 +27,6 @@
       "AbsoluteMoniker": "D:0:0:{5CAE3F81-256A-4B0F-B0D1-606B885C761F}|..\\src\\SistemaGerencial.Application\\SistemaGerencial.Application.csproj|e:\\me\\freelo\\repo\\sistemagerencial\\backend\\src\\sistemagerencial.application\\auth\\dtos\\refreshtokenrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Infrastructure\\Migrations\\20260607195057_AddSesionesActivas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5CAE3F81-256A-4B0F-B0D1-606B885C761F}|..\\src\\SistemaGerencial.Application\\SistemaGerencial.Application.csproj|e:\\me\\freelo\\repo\\sistemagerencial\\backend\\src\\sistemagerencial.application\\common\\interfaces\\iapplicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -37,9 +34,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{CECE61A2-ABE3-489F-8BA0-5BDD08998F82}|..\\src\\SistemaGerencial.Domain\\SistemaGerencial.Domain.csproj|e:\\me\\freelo\\repo\\sistemagerencial\\backend\\src\\sistemagerencial.domain\\entities\\sesionactiva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Infrastructure\\Migrations\\20260607181654_AddCodigoEmpresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CECE61A2-ABE3-489F-8BA0-5BDD08998F82}|..\\src\\SistemaGerencial.Domain\\SistemaGerencial.Domain.csproj|e:\\me\\freelo\\repo\\sistemagerencial\\backend\\src\\sistemagerencial.domain\\entities\\empresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -115,6 +109,12 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{CECE61A2-ABE3-489F-8BA0-5BDD08998F82}|..\\src\\SistemaGerencial.Domain\\SistemaGerencial.Domain.csproj|e:\\me\\freelo\\repo\\sistemagerencial\\backend\\src\\sistemagerencial.domain\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DFF6A73-CECB-4E88-BFA4-E198162B19C2}|..\\src\\SistemaGerencial.Infrastructure\\SistemaGerencial.Infrastructure.csproj|e:\\me\\freelo\\repo\\sistemagerencial\\backend\\src\\sistemagerencial.infrastructure\\migrations\\20260607195057_addsesionesactivas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DFF6A73-CECB-4E88-BFA4-E198162B19C2}|..\\src\\SistemaGerencial.Infrastructure\\SistemaGerencial.Infrastructure.csproj|e:\\me\\freelo\\repo\\sistemagerencial\\backend\\src\\sistemagerencial.infrastructure\\migrations\\20260607181654_addcodigoempresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -136,8 +136,7 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Application\\Auth\\Commands\\Logout\\LogoutCommandHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T19:55:41.241Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T19:55:41.241Z"
             },
             {
               "$type": "Document",
@@ -149,8 +148,7 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Application\\Auth\\Commands\\Logout\\LogoutCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T19:55:25.789Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T19:55:25.789Z"
             },
             {
               "$type": "Document",
@@ -162,8 +160,7 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Application\\Auth\\Commands\\Login\\LoginCommandHandler.cs",
               "ViewState": "AgIAAD0AAAAAAAAAAAAowGkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T07:20:29.921Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T07:20:29.921Z"
             },
             {
               "$type": "Document",
@@ -188,8 +185,7 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Application\\Auth\\Commands\\RefreshToken\\RefreshTokenCommandHandler.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAqwGYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T19:55:00.597Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T19:55:00.597Z"
             },
             {
               "$type": "Document",
@@ -201,8 +197,7 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Application\\Auth\\Commands\\RefreshToken\\RefreshTokenCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T19:54:42.35Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T19:54:42.35Z"
             },
             {
               "$type": "Document",
@@ -214,8 +209,7 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Application\\Auth\\DTOs\\RefreshTokenResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T19:54:04.675Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T19:54:04.675Z"
             },
             {
               "$type": "Document",
@@ -227,12 +221,11 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Application\\Auth\\DTOs\\RefreshTokenRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T19:53:52.408Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T19:53:52.408Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 36,
               "Title": "20260607195057_AddSesionesActivas.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Infrastructure\\Migrations\\20260607195057_AddSesionesActivas.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Infrastructure\\Migrations\\20260607195057_AddSesionesActivas.cs",
@@ -240,12 +233,11 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Infrastructure\\Migrations\\20260607195057_AddSesionesActivas.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T19:50:58.033Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T19:50:58.033Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "SesionActiva.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Domain\\Entities\\SesionActiva.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Domain\\Entities\\SesionActiva.cs",
@@ -253,12 +245,11 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Domain\\Entities\\SesionActiva.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T19:45:01.576Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T19:45:01.576Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 37,
               "Title": "20260607181654_AddCodigoEmpresa.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Infrastructure\\Migrations\\20260607181654_AddCodigoEmpresa.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Infrastructure\\Migrations\\20260607181654_AddCodigoEmpresa.cs",
@@ -266,12 +257,11 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Infrastructure\\Migrations\\20260607181654_AddCodigoEmpresa.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:55.096Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T18:16:55.096Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Infrastructure\\Persistence\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Infrastructure\\Persistence\\ApplicationDbContext.cs",
@@ -279,12 +269,11 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Infrastructure\\Persistence\\ApplicationDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-06T19:24:02.922Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-06T19:24:02.922Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "IApplicationDbContext.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Application\\Common\\Interfaces\\IApplicationDbContext.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Application\\Common\\Interfaces\\IApplicationDbContext.cs",
@@ -292,12 +281,11 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Application\\Common\\Interfaces\\IApplicationDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T07:18:09.686Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T07:18:09.686Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 14,
               "Title": "launchSettings.json",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Api\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Api\\Properties\\launchSettings.json",
@@ -305,12 +293,11 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Api\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-06-07T07:31:54.505Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T07:31:54.505Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 12,
               "Title": "ApplicationDbContextSeed.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Infrastructure\\Persistence\\ApplicationDbContextSeed.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Infrastructure\\Persistence\\ApplicationDbContextSeed.cs",
@@ -318,12 +305,11 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Infrastructure\\Persistence\\ApplicationDbContextSeed.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAowA0AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T17:42:07.9Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T17:42:07.9Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 19,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Application\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Application\\DependencyInjection.cs",
@@ -335,7 +321,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 21,
               "Title": "TokenService.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Infrastructure\\Services\\TokenService.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Infrastructure\\Services\\TokenService.cs",
@@ -347,7 +333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 23,
               "Title": "LoginCommand.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Application\\Auth\\Commands\\Login\\LoginCommand.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Application\\Auth\\Commands\\Login\\LoginCommand.cs",
@@ -359,7 +345,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 24,
               "Title": "UsuarioDto.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Application\\Auth\\DTOs\\UsuarioDto.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Application\\Auth\\DTOs\\UsuarioDto.cs",
@@ -371,7 +357,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 15,
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Api\\appsettings.json",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Api\\appsettings.json",
@@ -383,7 +369,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 13,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Api\\Program.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Api\\Program.cs",
@@ -391,12 +377,11 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Api\\Program.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAAAE0AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T04:02:20.089Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T04:02:20.089Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 11,
               "Title": "Empresa.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Domain\\Entities\\Empresa.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Domain\\Entities\\Empresa.cs",
@@ -404,12 +389,11 @@
               "RelativeToolTip": "..\\src\\SistemaGerencial.Domain\\Entities\\Empresa.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T05:10:22.542Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T05:10:22.542Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 17,
               "Title": "20260607072908_AddUsuariosYRoles.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Infrastructure\\Migrations\\20260607072908_AddUsuariosYRoles.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Infrastructure\\Migrations\\20260607072908_AddUsuariosYRoles.cs",
@@ -421,7 +405,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 16,
               "Title": "ApplicationDbContextModelSnapshot.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Infrastructure\\Migrations\\ApplicationDbContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Infrastructure\\Migrations\\ApplicationDbContextModelSnapshot.cs",
@@ -433,7 +417,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 18,
               "Title": "20260607062912_InitialCreate.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Infrastructure\\Migrations\\20260607062912_InitialCreate.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Infrastructure\\Migrations\\20260607062912_InitialCreate.cs",
@@ -445,7 +429,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 25,
               "Title": "LoginResponse.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Application\\Auth\\DTOs\\LoginResponse.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Application\\Auth\\DTOs\\LoginResponse.cs",
@@ -457,7 +441,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 26,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Application\\Auth\\DTOs\\LoginRequest.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Application\\Auth\\DTOs\\LoginRequest.cs",
@@ -469,7 +453,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 27,
               "Title": "ITokenService.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Application\\Common\\Interfaces\\ITokenService.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Application\\Common\\Interfaces\\ITokenService.cs",
@@ -481,7 +465,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 22,
               "Title": "EstadoUsuario.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Domain\\Enums\\EstadoUsuario.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Domain\\Enums\\EstadoUsuario.cs",
@@ -493,7 +477,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 28,
               "Title": "Rol.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Domain\\Entities\\Rol.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Domain\\Entities\\Rol.cs",
@@ -505,7 +489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 20,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Infrastructure\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Infrastructure\\DependencyInjection.cs",
@@ -517,7 +501,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 29,
               "Title": "Usuario.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Domain\\Entities\\Usuario.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Domain\\Entities\\Usuario.cs",
@@ -529,7 +513,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 31,
               "Title": "CurrentUserService.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Infrastructure\\Services\\CurrentUserService.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Infrastructure\\Services\\CurrentUserService.cs",
@@ -541,7 +525,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 32,
               "Title": "ICurrentUserService.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Application\\Common\\Interfaces\\ICurrentUserService.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Application\\Common\\Interfaces\\ICurrentUserService.cs",
@@ -553,7 +537,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 34,
               "Title": "SistemaGerencial.Application.csproj",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Application\\SistemaGerencial.Application.csproj",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Application\\SistemaGerencial.Application.csproj",
@@ -565,7 +549,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 33,
               "Title": "JwtSettings.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Application\\Common\\Interfaces\\JwtSettings.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Application\\Common\\Interfaces\\JwtSettings.cs",
@@ -577,7 +561,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 30,
               "Title": "ExceptionHandlingMiddleware.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
@@ -589,7 +573,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 35,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "E:\\me\\freelo\\repo\\SistemaGerencial\\backend\\src\\SistemaGerencial.Domain\\Entities\\BaseEntity.cs",
               "RelativeDocumentMoniker": "..\\src\\SistemaGerencial.Domain\\Entities\\BaseEntity.cs",

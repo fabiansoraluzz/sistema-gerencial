@@ -17,3 +17,4 @@ E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Infrastructure\o
 E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Infrastructure\obj\Debug\net8.0\SistemaGerencial.Infrastructure.pdb
 E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Infrastructure\obj\Debug\net8.0\SistemaGerencial.Infrastructure.genruntimeconfig.cache
 E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Infrastructure\obj\Debug\net8.0\ref\SistemaGerencial.Infrastructure.dll
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Infrastructure\obj\Debug\net8.0\SistemaGerencial.Infrastructure.sourcelink.json
