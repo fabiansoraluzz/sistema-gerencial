@@ -1,0 +1,15 @@
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\bin\Debug\net8.0\SistemaGerencial.Application.deps.json
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\bin\Debug\net8.0\SistemaGerencial.Application.dll
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\bin\Debug\net8.0\SistemaGerencial.Application.pdb
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\bin\Debug\net8.0\SistemaGerencial.Domain.dll
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\bin\Debug\net8.0\SistemaGerencial.Domain.pdb
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\SistemaGerencial.Application.csproj.AssemblyReference.cache
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\SistemaGerencial.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\SistemaGerencial.Application.AssemblyInfoInputs.cache
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\SistemaGerencial.Application.AssemblyInfo.cs
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\SistemaGerencial.Application.csproj.CoreCompileInputs.cache
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\SistemaG.35590E4B.Up2Date
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\SistemaGerencial.Application.dll
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\refint\SistemaGerencial.Application.dll
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\SistemaGerencial.Application.pdb
+E:\me\freelo\repo\SistemaGerencial\backend\src\SistemaGerencial.Application\obj\Debug\net8.0\ref\SistemaGerencial.Application.dll
