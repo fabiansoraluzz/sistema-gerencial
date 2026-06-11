@@ -19,6 +19,9 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<MovimientoCaja> MovimientosCaja => Set<MovimientoCaja>();
     public DbSet<CuentaPorCobrar> CuentasPorCobrar => Set<CuentaPorCobrar>();
     public DbSet<CuentaPorPagar> CuentasPorPagar => Set<CuentaPorPagar>();
+    public DbSet<AreaEmpresa> AreasEmpresa => Set<AreaEmpresa>();
+    public DbSet<CuentaBancaria> CuentasBancarias => Set<CuentaBancaria>();
+    public DbSet<CategoriaGasto> CategoriasGasto => Set<CategoriaGasto>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

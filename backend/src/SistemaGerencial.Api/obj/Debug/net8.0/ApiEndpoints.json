@@ -92,6 +92,53 @@
     ]
   },
   {
+    "ContainingType": "SistemaGerencial.Api.Controllers.CajaController",
+    "Method": "GetMovimientos",
+    "RelativePath": "api/Caja",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tipo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "mes",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "anio",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGerencial.Api.Controllers.CajaController",
+    "Method": "CrearMovimiento",
+    "RelativePath": "api/Caja",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "SistemaGerencial.Application.Finanzas.Commands.CrearMovimientoCaja.CrearMovimientoCajaCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SistemaGerencial.Api.Controllers.DashboardController",
     "Method": "Get",
     "RelativePath": "api/Dashboard",

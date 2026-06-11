@@ -13,6 +13,9 @@ public interface IApplicationDbContext
     DbSet<MovimientoCaja> MovimientosCaja { get; }
     DbSet<CuentaPorCobrar> CuentasPorCobrar { get; }
     DbSet<CuentaPorPagar> CuentasPorPagar { get; }
+    DbSet<AreaEmpresa> AreasEmpresa { get; }
+    DbSet<CuentaBancaria> CuentasBancarias { get; }
+    DbSet<CategoriaGasto> CategoriasGasto { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

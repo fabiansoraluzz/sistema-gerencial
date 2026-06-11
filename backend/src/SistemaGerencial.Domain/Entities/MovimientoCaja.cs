@@ -19,5 +19,9 @@ public class MovimientoCaja : BaseEntity
     public Guid? GastosRecurrentesId { get; set; }
     public Guid? CreadoPor { get; set; }
 
+    // Navegación
     public Empresa Empresa { get; set; } = null!;
+    public CuentaBancaria? CuentaBancaria { get; set; }
+    public CategoriaGasto? Categoria { get; set; }
+    public AreaEmpresa? Area { get; set; }
 }
