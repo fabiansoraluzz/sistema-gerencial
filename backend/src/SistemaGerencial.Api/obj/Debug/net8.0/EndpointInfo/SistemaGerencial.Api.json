@@ -250,6 +250,124 @@
         }
       }
     },
+    "/api/cxc": {
+      "get": {
+        "tags": [
+          "CxC"
+        ],
+        "parameters": [
+          {
+            "name": "estado",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CxC"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CrearCuentaPorCobrarCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CrearCuentaPorCobrarCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CrearCuentaPorCobrarCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/cxp": {
+      "get": {
+        "tags": [
+          "CxP"
+        ],
+        "parameters": [
+          {
+            "name": "estado",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CxP"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CrearCuentaPorPagarCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CrearCuentaPorPagarCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CrearCuentaPorPagarCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Dashboard": {
       "get": {
         "tags": [
@@ -265,6 +383,80 @@
   },
   "components": {
     "schemas": {
+      "CrearCuentaPorCobrarCommand": {
+        "type": "object",
+        "properties": {
+          "nombreContacto": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoContacto": {
+            "type": "string",
+            "nullable": true
+          },
+          "concepto": {
+            "type": "string",
+            "nullable": true
+          },
+          "montoTotal": {
+            "type": "number",
+            "format": "double"
+          },
+          "fechaEmision": {
+            "type": "string",
+            "format": "date"
+          },
+          "fechaVencimiento": {
+            "type": "string",
+            "format": "date"
+          },
+          "numeroDocumento": {
+            "type": "string",
+            "nullable": true
+          },
+          "tieneIgv": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CrearCuentaPorPagarCommand": {
+        "type": "object",
+        "properties": {
+          "nombreContacto": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoContacto": {
+            "type": "string",
+            "nullable": true
+          },
+          "concepto": {
+            "type": "string",
+            "nullable": true
+          },
+          "montoTotal": {
+            "type": "number",
+            "format": "double"
+          },
+          "fechaEmision": {
+            "type": "string",
+            "format": "date"
+          },
+          "fechaVencimiento": {
+            "type": "string",
+            "format": "date"
+          },
+          "numeroDocumento": {
+            "type": "string",
+            "nullable": true
+          },
+          "tieneIgv": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "CrearMovimientoCajaCommand": {
         "type": "object",
         "properties": {

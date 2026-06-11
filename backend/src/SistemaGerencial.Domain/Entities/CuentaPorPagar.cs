@@ -16,4 +16,5 @@ public class CuentaPorPagar : BaseEntity
     public Guid? CreadoPor { get; set; }
 
     public Empresa Empresa { get; set; } = null!;
+    public Contacto Contacto { get; set; } = null!;
 }

@@ -22,6 +22,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<AreaEmpresa> AreasEmpresa => Set<AreaEmpresa>();
     public DbSet<CuentaBancaria> CuentasBancarias => Set<CuentaBancaria>();
     public DbSet<CategoriaGasto> CategoriasGasto => Set<CategoriaGasto>();
+    public DbSet<Contacto> Contactos => Set<Contacto>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

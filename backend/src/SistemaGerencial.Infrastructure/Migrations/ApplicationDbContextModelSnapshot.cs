@@ -101,6 +101,60 @@ namespace SistemaGerencial.Infrastructure.Migrations
                     b.ToTable("CategoriasGasto");
                 });
 
+            modelBuilder.Entity("SistemaGerencial.Domain.Entities.Contacto", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("ActualizadoEn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("CreadoEn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreadoPor")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Direccion")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Documento")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("EliminadoEn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("EmpresaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("EstaActivo")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Telefono")
+                        .HasColumnType("text");
+
+                    b.Property<string>("TipoContacto")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("TipoDocumento")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("Contactos");
+                });
+
             modelBuilder.Entity("SistemaGerencial.Domain.Entities.CuentaBancaria", b =>
                 {
                     b.Property<Guid>("Id")
@@ -202,6 +256,8 @@ namespace SistemaGerencial.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ContactoId");
+
                     b.HasIndex("EmpresaId");
 
                     b.ToTable("CuentasPorCobrar");
@@ -261,6 +317,8 @@ namespace SistemaGerencial.Infrastructure.Migrations
                         .HasColumnType("boolean");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ContactoId");
 
                     b.HasIndex("EmpresaId");
 
@@ -567,6 +625,17 @@ namespace SistemaGerencial.Infrastructure.Migrations
                     b.Navigation("Empresa");
                 });
 
+            modelBuilder.Entity("SistemaGerencial.Domain.Entities.Contacto", b =>
+                {
+                    b.HasOne("SistemaGerencial.Domain.Entities.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Empresa");
+                });
+
             modelBuilder.Entity("SistemaGerencial.Domain.Entities.CuentaBancaria", b =>
                 {
                     b.HasOne("SistemaGerencial.Domain.Entities.Empresa", "Empresa")
@@ -580,22 +649,38 @@ namespace SistemaGerencial.Infrastructure.Migrations
 
             modelBuilder.Entity("SistemaGerencial.Domain.Entities.CuentaPorCobrar", b =>
                 {
+                    b.HasOne("SistemaGerencial.Domain.Entities.Contacto", "Contacto")
+                        .WithMany("CuentasPorCobrar")
+                        .HasForeignKey("ContactoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SistemaGerencial.Domain.Entities.Empresa", "Empresa")
                         .WithMany()
                         .HasForeignKey("EmpresaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Contacto");
 
                     b.Navigation("Empresa");
                 });
 
             modelBuilder.Entity("SistemaGerencial.Domain.Entities.CuentaPorPagar", b =>
                 {
+                    b.HasOne("SistemaGerencial.Domain.Entities.Contacto", "Contacto")
+                        .WithMany("CuentasPorPagar")
+                        .HasForeignKey("ContactoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SistemaGerencial.Domain.Entities.Empresa", "Empresa")
                         .WithMany()
                         .HasForeignKey("EmpresaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Contacto");
 
                     b.Navigation("Empresa");
                 });
@@ -666,6 +751,13 @@ namespace SistemaGerencial.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Empresa");
+                });
+
+            modelBuilder.Entity("SistemaGerencial.Domain.Entities.Contacto", b =>
+                {
+                    b.Navigation("CuentasPorCobrar");
+
+                    b.Navigation("CuentasPorPagar");
                 });
 
             modelBuilder.Entity("SistemaGerencial.Domain.Entities.Empresa", b =>

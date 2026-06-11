@@ -16,6 +16,7 @@ public interface IApplicationDbContext
     DbSet<AreaEmpresa> AreasEmpresa { get; }
     DbSet<CuentaBancaria> CuentasBancarias { get; }
     DbSet<CategoriaGasto> CategoriasGasto { get; }
+    DbSet<Contacto> Contactos { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using SistemaGerencial.Application.Auth.Commands.Login;
+using SistemaGerencial.Application.Common.Behaviors;
 
 namespace SistemaGerencial.Application;
 
@@ -15,6 +16,10 @@ public static class DependencyInjection
 
         services.AddValidatorsFromAssembly(
             typeof(DependencyInjection).Assembly);
+
+        services.AddTransient(
+            typeof(IPipelineBehavior<,>),
+            typeof(ValidationBehavior<,>));
 
         return services;
     }

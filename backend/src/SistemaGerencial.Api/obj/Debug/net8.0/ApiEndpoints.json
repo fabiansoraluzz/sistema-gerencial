@@ -139,6 +139,80 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SistemaGerencial.Api.Controllers.CxCController",
+    "Method": "Get",
+    "RelativePath": "api/cxc",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "estado",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGerencial.Api.Controllers.CxCController",
+    "Method": "Crear",
+    "RelativePath": "api/cxc",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "SistemaGerencial.Application.Finanzas.Commands.CrearCuentaPorCobrar.CrearCuentaPorCobrarCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGerencial.Api.Controllers.CxPController",
+    "Method": "Get",
+    "RelativePath": "api/cxp",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "estado",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaGerencial.Api.Controllers.CxPController",
+    "Method": "Crear",
+    "RelativePath": "api/cxp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "SistemaGerencial.Application.Finanzas.Commands.CrearCuentaPorPagar.CrearCuentaPorPagarCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SistemaGerencial.Api.Controllers.DashboardController",
     "Method": "Get",
     "RelativePath": "api/Dashboard",

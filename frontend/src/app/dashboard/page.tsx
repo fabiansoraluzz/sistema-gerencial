@@ -12,7 +12,9 @@ import { dashboardService } from '@/services/dashboardService'
 import { DashboardData } from '@/types/dashboard'
 
 const fmt = (v: number) =>
-  `S/. ${v.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+  `S/. ${v.toLocaleString('es-PE', {
+    minimumFractionDigits: 2, maximumFractionDigits: 2
+  })}`
 
 export default function DashboardPage() {
   const router = useRouter()
@@ -31,9 +33,11 @@ export default function DashboardPage() {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-6 h-6 border-2 border-blue-700 border-t-transparent
-            rounded-full animate-spin" />
-          <p className="text-sm text-gray-400">Cargando datos financieros...</p>
+          <div className="w-6 h-6 border-2 border-blue-700
+            border-t-transparent rounded-full animate-spin" />
+          <p className="text-sm text-gray-400">
+            Cargando datos financieros...
+          </p>
         </div>
       </div>
     )
@@ -89,7 +93,8 @@ export default function DashboardPage() {
     <div className="space-y-6">
 
       {/* Acciones rápidas */}
-      <div className="flex items-center justify-between flex-wrap gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center
+        justify-between gap-3">
         <div>
           <h2 className="text-base font-medium text-gray-900">
             Resumen financiero
@@ -208,20 +213,63 @@ export default function DashboardPage() {
             </div>
           ) : (
             <>
-              <div className="flex items-end gap-2 h-44">
+              <div className="flex items-end gap-2 h-44 relative">
                 {data.movimientosMensuales.map((m) => (
                   <div key={m.mes}
-                    className="flex-1 flex flex-col items-center gap-1.5">
+                    className="flex-1 flex flex-col items-center gap-1.5
+                      group relative">
+
+                    {/* Tooltip */}
+                    <div className="absolute bottom-full mb-2 left-1/2
+                      -translate-x-1/2 bg-gray-900 text-white rounded-lg
+                      px-3 py-2 text-xs whitespace-nowrap opacity-0
+                      group-hover:opacity-100 transition-opacity duration-150
+                      pointer-events-none z-10 shadow-lg">
+                      <p className="font-medium text-center mb-1">{m.mes}</p>
+                      <div className="flex items-center gap-1.5 mb-0.5">
+                        <div className="w-2 h-2 rounded-sm bg-[#4a85d8]
+                          shrink-0" />
+                        <span className="text-gray-300">Ingresos:</span>
+                        <span className="font-medium">
+                          {fmt(m.totalIngresos)}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-2 h-2 rounded-sm bg-red-300
+                          shrink-0" />
+                        <span className="text-gray-300">Egresos:</span>
+                        <span className="font-medium">
+                          {fmt(m.totalEgresos)}
+                        </span>
+                      </div>
+                      <div className="border-t border-gray-700 mt-1.5 pt-1.5">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-gray-300">Resultado:</span>
+                          <span className={cn('font-medium',
+                            m.totalIngresos - m.totalEgresos >= 0
+                              ? 'text-green-400' : 'text-red-400')}>
+                            {fmt(m.totalIngresos - m.totalEgresos)}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="absolute top-full left-1/2
+                        -translate-x-1/2 border-4 border-transparent
+                        border-t-gray-900" />
+                    </div>
+
+                    {/* Barras */}
                     <div className="w-full flex items-end gap-0.5 h-36">
                       <div
-                        className="flex-1 bg-[#1a3f7a] rounded-t"
+                        className="flex-1 bg-[#1a3f7a] hover:bg-[#4a85d8]
+                          rounded-t transition-colors cursor-pointer"
                         style={{
                           height: `${(m.totalIngresos / maxVal) * 100}%`,
                           minHeight: m.totalIngresos > 0 ? '3px' : '0'
                         }}
                       />
                       <div
-                        className="flex-1 bg-red-200 rounded-t"
+                        className="flex-1 bg-red-200 hover:bg-red-400
+                          rounded-t transition-colors cursor-pointer"
                         style={{
                           height: `${(m.totalEgresos / maxVal) * 100}%`,
                           minHeight: m.totalEgresos > 0 ? '3px' : '0'
@@ -232,6 +280,7 @@ export default function DashboardPage() {
                   </div>
                 ))}
               </div>
+
               <div className="flex items-center gap-4 mt-4 pt-4
                 border-t border-gray-50">
                 <div className="flex items-center gap-1.5">
@@ -268,31 +317,26 @@ export default function DashboardPage() {
           {data.alertas.length === 0 ? (
             <div className="h-44 flex flex-col items-center justify-center
               gap-2">
-              <div className="w-8 h-8 bg-green-50 rounded-full flex items-center
-                justify-center">
+              <div className="w-8 h-8 bg-green-50 rounded-full flex
+                items-center justify-center">
                 <Info className="w-4 h-4 text-green-500" />
               </div>
               <p className="text-sm text-gray-400 text-center">
                 Sin alertas pendientes
               </p>
-              <p className="text-xs text-gray-300 text-center">
-                Todo al día
-              </p>
+              <p className="text-xs text-gray-300 text-center">Todo al día</p>
             </div>
           ) : (
             <div className="space-y-2 overflow-y-auto max-h-52">
               {data.alertas.map((a, i) => (
-                <div
-                  key={i}
-                  className={cn(
-                    'flex items-start gap-2.5 p-3 rounded-lg border',
-                    a.tipo === 'danger'
-                      ? 'bg-red-50 border-red-100'
-                      : a.tipo === 'warning'
-                      ? 'bg-orange-50 border-orange-100'
-                      : 'bg-blue-50 border-blue-100'
-                  )}
-                >
+                <div key={i} className={cn(
+                  'flex items-start gap-2.5 p-3 rounded-lg border',
+                  a.tipo === 'danger'
+                    ? 'bg-red-50 border-red-100'
+                    : a.tipo === 'warning'
+                    ? 'bg-orange-50 border-orange-100'
+                    : 'bg-blue-50 border-blue-100'
+                )}>
                   {a.tipo === 'danger' ? (
                     <AlertCircle className="w-3.5 h-3.5 mt-0.5 shrink-0
                       text-red-500" />

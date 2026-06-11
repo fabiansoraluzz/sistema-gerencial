@@ -9,6 +9,11 @@ import {
 import { cn } from '@/lib/utils'
 import { cajaService } from '@/services/cajaService'
 import { MovimientoCajaDto, GetMovimientosResult } from '@/types/caja'
+import FormInput from '@/components/ui/form-input'
+import FormSelect from '@/components/ui/form-select'
+import FormDate from '@/components/ui/form-date'
+import FormAmount from '@/components/ui/form-amount'
+import FormCheckbox from '@/components/ui/form-checkbox'
 
 const fmt = (v: number) =>
   `S/. ${v.toLocaleString('es-PE', {
@@ -16,18 +21,18 @@ const fmt = (v: number) =>
   })}`
 
 const METODOS = [
-  { value: 'efectivo',        label: 'Efectivo' },
-  { value: 'yape',            label: 'Yape' },
-  { value: 'plin',            label: 'Plin' },
-  { value: 'transferencia',   label: 'Transferencia' },
-  { value: 'tarjeta_debito',  label: 'Tarjeta débito' },
+  { value: 'efectivo', label: 'Efectivo' },
+  { value: 'yape', label: 'Yape' },
+  { value: 'plin', label: 'Plin' },
+  { value: 'transferencia', label: 'Transferencia' },
+  { value: 'tarjeta_debito', label: 'Tarjeta débito' },
   { value: 'tarjeta_credito', label: 'Tarjeta crédito' },
-  { value: 'cheque',          label: 'Cheque' },
+  { value: 'cheque', label: 'Cheque' },
 ]
 
 const MESES = [
-  'Enero','Febrero','Marzo','Abril','Mayo','Junio',
-  'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'
+  'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
 ]
 
 interface FormData {
@@ -116,6 +121,30 @@ export default function CajaPage() {
     }
   }
 
+  const erroresCaja = {
+    monto: (() => {
+      if (!form.monto) return 'El monto es obligatorio'
+      const n = parseFloat(form.monto)
+      if (isNaN(n) || n <= 0) return 'El monto debe ser mayor a 0'
+      if (n > 9_999_999.99) return 'El monto no puede superar S/. 9,999,999.99'
+      if (!/^\d+(\.\d{1,2})?$/.test(form.monto)) return 'Solo 2 decimales'
+      return null
+    })(),
+    descripcion: (() => {
+      if (!form.descripcion) return 'La descripción es obligatoria'
+      if (form.descripcion.length > 300) return 'Máximo 300 caracteres'
+      return null
+    })(),
+    numeroDocumento: (() => {
+      if (form.numeroDocumento && form.numeroDocumento.length > 20)
+        return 'Máximo 20 caracteres'
+      return null
+    })(),
+  }
+
+  const cajaValido = !Object.values(erroresCaja).some(Boolean)
+  const [touchedCaja, setTouchedCaja] = useState<Record<string, boolean>>({})
+
   return (
     <div className="space-y-5">
 
@@ -187,21 +216,17 @@ export default function CajaPage() {
 
       {/* Filtros */}
       <div className="flex items-center gap-2 flex-wrap">
+
         {/* Mes */}
-        <div className="relative">
-          <select
-            value={mes}
-            onChange={e => setMes(Number(e.target.value))}
-            className="appearance-none pl-3 pr-8 py-2 text-xs border
-              border-gray-200 rounded-lg bg-white text-gray-700
-              focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
-          >
-            {MESES.map((m, i) => (
-              <option key={m} value={i + 1}>{m}</option>
-            ))}
-          </select>
-          <ChevronDown className="w-3 h-3 text-gray-400 absolute right-2.5
-            top-1/2 -translate-y-1/2 pointer-events-none" />
+        <div className="w-36">
+          <FormSelect
+            value={mes.toString()}
+            onChange={v => setMes(Number(v))}
+            options={MESES.map((m, i) => ({
+              value: (i + 1).toString(),
+              label: m
+            }))}
+          />
         </div>
 
         {/* Tipo */}
@@ -225,6 +250,7 @@ export default function CajaPage() {
             </button>
           ))}
         </div>
+
       </div>
 
       {/* Lista de movimientos */}
@@ -248,65 +274,95 @@ export default function CajaPage() {
           </div>
         ) : (
           <div className="divide-y divide-gray-50">
-            {/* Encabezado tabla */}
-            <div className="grid grid-cols-12 px-4 py-2.5 bg-gray-50
-              text-xs font-medium text-gray-400">
+            {/* Encabezado — oculto en mobile */}
+            <div className="hidden sm:grid grid-cols-12 px-4 py-2.5 bg-gray-50
+  text-xs font-medium text-gray-400">
               <div className="col-span-1">Tipo</div>
               <div className="col-span-4">Descripción</div>
               <div className="col-span-2">Fecha</div>
               <div className="col-span-2">Método</div>
               <div className="col-span-3 text-right">Monto</div>
             </div>
+
             {data.items.map((m) => (
               <div key={m.id}
-                className="grid grid-cols-12 px-4 py-3 hover:bg-gray-50
-                  transition-colors items-center">
-                <div className="col-span-1">
-                  <span className={cn(
-                    'inline-flex items-center justify-center w-6 h-6 rounded-full',
-                    m.tipo === 'ingreso'
-                      ? 'bg-green-100' : 'bg-red-100'
-                  )}>
-                    {m.tipo === 'ingreso'
-                      ? <TrendingUp className="w-3 h-3 text-green-600" />
-                      : <TrendingDown className="w-3 h-3 text-red-500" />}
-                  </span>
-                </div>
-                <div className="col-span-4">
-                  <p className="text-xs font-medium text-gray-800 truncate">
-                    {m.descripcion}
-                  </p>
-                  {m.nombreArea && (
-                    <p className="text-[10px] text-gray-400 mt-0.5">
-                      {m.nombreArea}
-                    </p>
-                  )}
-                </div>
-                <div className="col-span-2">
-                  <p className="text-xs text-gray-500">
-                    {new Date(m.fechaMovimiento + 'T00:00:00')
-                      .toLocaleDateString('es-PE', {
-                        day: '2-digit', month: 'short'
-                      })}
-                  </p>
-                </div>
-                <div className="col-span-2">
-                  <span className="text-[10px] text-gray-400 capitalize">
-                    {m.metodoPago.replace('_', ' ')}
-                  </span>
-                </div>
-                <div className="col-span-3 text-right">
-                  <p className={cn('text-xs font-medium',
-                    m.tipo === 'ingreso'
-                      ? 'text-green-700' : 'text-red-600')}>
+                className="px-4 py-3 hover:bg-gray-50 transition-colors">
+
+                {/* Vista mobile */}
+                <div className="flex items-start justify-between sm:hidden">
+                  <div className="flex items-start gap-2.5">
+                    <span className={cn(
+                      'inline-flex items-center justify-center w-6 h-6 rounded-full mt-0.5 shrink-0',
+                      m.tipo === 'ingreso' ? 'bg-green-100' : 'bg-red-100'
+                    )}>
+                      {m.tipo === 'ingreso'
+                        ? <TrendingUp className="w-3 h-3 text-green-600" />
+                        : <TrendingDown className="w-3 h-3 text-red-500" />}
+                    </span>
+                    <div>
+                      <p className="text-xs font-medium text-gray-800">
+                        {m.descripcion}
+                      </p>
+                      <p className="text-[10px] text-gray-400 mt-0.5">
+                        {new Date(m.fechaMovimiento + 'T00:00:00')
+                          .toLocaleDateString('es-PE', {
+                            day: '2-digit', month: 'short', year: '2-digit'
+                          })} · {m.metodoPago.replace('_', ' ')}
+                      </p>
+                    </div>
+                  </div>
+                  <p className={cn('text-xs font-medium shrink-0 ml-2',
+                    m.tipo === 'ingreso' ? 'text-green-700' : 'text-red-600')}>
                     {m.tipo === 'ingreso' ? '+' : '-'}{fmt(m.monto)}
                   </p>
-                  {m.tieneIgv && (
-                    <p className="text-[10px] text-gray-400 mt-0.5">
-                      IGV {fmt(m.igvMonto)}
-                    </p>
-                  )}
                 </div>
+
+                {/* Vista desktop */}
+                <div className="hidden sm:grid grid-cols-12 items-center">
+                  <div className="col-span-1">
+                    <span className={cn(
+                      'inline-flex items-center justify-center w-6 h-6 rounded-full',
+                      m.tipo === 'ingreso' ? 'bg-green-100' : 'bg-red-100'
+                    )}>
+                      {m.tipo === 'ingreso'
+                        ? <TrendingUp className="w-3 h-3 text-green-600" />
+                        : <TrendingDown className="w-3 h-3 text-red-500" />}
+                    </span>
+                  </div>
+                  <div className="col-span-4">
+                    <p className="text-xs font-medium text-gray-800 truncate">
+                      {m.descripcion}
+                    </p>
+                    {m.nombreArea && (
+                      <p className="text-[10px] text-gray-400 mt-0.5">{m.nombreArea}</p>
+                    )}
+                  </div>
+                  <div className="col-span-2">
+                    <p className="text-xs text-gray-500">
+                      {new Date(m.fechaMovimiento + 'T00:00:00')
+                        .toLocaleDateString('es-PE', {
+                          day: '2-digit', month: 'short'
+                        })}
+                    </p>
+                  </div>
+                  <div className="col-span-2">
+                    <span className="text-[10px] text-gray-400 capitalize">
+                      {m.metodoPago.replace('_', ' ')}
+                    </span>
+                  </div>
+                  <div className="col-span-3 text-right">
+                    <p className={cn('text-xs font-medium',
+                      m.tipo === 'ingreso' ? 'text-green-700' : 'text-red-600')}>
+                      {m.tipo === 'ingreso' ? '+' : '-'}{fmt(m.monto)}
+                    </p>
+                    {m.tieneIgv && (
+                      <p className="text-[10px] text-gray-400 mt-0.5">
+                        IGV {fmt(m.igvMonto)}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
               </div>
             ))}
           </div>
@@ -346,9 +402,8 @@ export default function CajaPage() {
             {/* Cuerpo modal */}
             <div className="px-5 py-4 space-y-4">
 
-              {/* Tipo selector */}
-              <div className="flex items-center gap-1 bg-gray-100
-                rounded-lg p-0.5 w-fit">
+              {/* Tipo */}
+              <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-0.5 w-fit">
                 {(['ingreso', 'egreso'] as const).map((t) => (
                   <button
                     key={t}
@@ -367,140 +422,67 @@ export default function CajaPage() {
               </div>
 
               {/* Monto */}
-              <div>
-                <label className="text-xs font-medium text-gray-700
-                  block mb-1.5">
-                  Monto <span className="text-red-500">*</span>
-                </label>
-                <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2
-                    text-xs text-gray-400">
-                    S/.
-                  </span>
-                  <input
-                    type="number"
-                    step="0.01"
-                    min="0"
-                    placeholder="0.00"
-                    value={form.monto}
-                    onChange={e => setForm(f =>
-                      ({ ...f, monto: e.target.value }))}
-                    className="w-full pl-9 pr-3 py-2.5 text-sm border
-                      border-gray-200 rounded-lg focus:outline-none
-                      focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-              </div>
+              <FormAmount
+                label="Monto"
+                required
+                value={form.monto}
+                onChange={v => setForm(f => ({ ...f, monto: v }))}
+                onBlur={() => setTouchedCaja(t => ({ ...t, monto: true }))}
+                error={touchedCaja.monto ? erroresCaja.monto : null}
+              />
 
               {/* Descripción */}
-              <div>
-                <label className="text-xs font-medium text-gray-700
-                  block mb-1.5">
-                  Descripción <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Ej: Pago consulta médica"
-                  value={form.descripcion}
-                  onChange={e => setForm(f =>
-                    ({ ...f, descripcion: e.target.value }))}
-                  className="w-full px-3 py-2.5 text-sm border border-gray-200
-                    rounded-lg focus:outline-none focus:ring-2
-                    focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
+              <FormInput
+                label="Descripción"
+                required
+                placeholder="Ej: Pago consulta médica"
+                value={form.descripcion}
+                maxLength={300}
+                counter
+                onChange={e => setForm(f => ({ ...f, descripcion: e.target.value }))}
+                onBlur={() => setTouchedCaja(t => ({ ...t, descripcion: true }))}
+                error={touchedCaja.descripcion ? erroresCaja.descripcion : null}
+              />
 
               {/* Fecha y método */}
               <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="text-xs font-medium text-gray-700
-                    block mb-1.5">
-                    Fecha
-                  </label>
-                  <input
-                    type="date"
-                    value={form.fechaMovimiento}
-                    onChange={e => setForm(f =>
-                      ({ ...f, fechaMovimiento: e.target.value }))}
-                    className="w-full px-3 py-2.5 text-sm border border-gray-200
-                      rounded-lg focus:outline-none focus:ring-2
-                      focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-                <div>
-                  <label className="text-xs font-medium text-gray-700
-                    block mb-1.5">
-                    Método de pago
-                  </label>
-                  <div className="relative">
-                    <select
-                      value={form.metodoPago}
-                      onChange={e => setForm(f =>
-                        ({ ...f, metodoPago: e.target.value }))}
-                      className="w-full appearance-none pl-3 pr-8 py-2.5
-                        text-sm border border-gray-200 rounded-lg
-                        focus:outline-none focus:ring-2 focus:ring-blue-500
-                        bg-white cursor-pointer"
-                    >
-                      {METODOS.map(m => (
-                        <option key={m.value} value={m.value}>
-                          {m.label}
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown className="w-3.5 h-3.5 text-gray-400
-                      absolute right-2.5 top-1/2 -translate-y-1/2
-                      pointer-events-none" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Número de documento */}
-              <div>
-                <label className="text-xs font-medium text-gray-700
-                  block mb-1.5">
-                  N° de documento
-                  <span className="text-gray-400 font-normal ml-1">
-                    (opcional)
-                  </span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Ej: F001-00123"
-                  value={form.numeroDocumento}
-                  onChange={e => setForm(f =>
-                    ({ ...f, numeroDocumento: e.target.value }))}
-                  className="w-full px-3 py-2.5 text-sm border border-gray-200
-                    rounded-lg focus:outline-none focus:ring-2
-                    focus:ring-blue-500 focus:border-transparent"
+                <FormDate
+                  label="Fecha"
+                  value={form.fechaMovimiento}
+                  onChange={v => setForm(f => ({ ...f, fechaMovimiento: v }))}
+                />
+                <FormSelect
+                  label="Método de pago"
+                  value={form.metodoPago}
+                  onChange={v => setForm(f => ({ ...f, metodoPago: v }))}
+                  options={METODOS}
                 />
               </div>
 
-              {/* IGV */}
-              <button
-                type="button"
-                onClick={() => setForm(f =>
-                  ({ ...f, tieneIgv: !f.tieneIgv }))}
-                className="flex items-center gap-2.5 text-xs text-gray-600
-                  hover:text-gray-900 transition-colors"
-              >
-                <div className={cn(
-                  'w-4 h-4 rounded border flex items-center justify-center',
-                  'transition-colors',
-                  form.tieneIgv
-                    ? 'bg-[#1a3f7a] border-[#1a3f7a]'
-                    : 'border-gray-300'
-                )}>
-                  {form.tieneIgv &&
-                    <Check className="w-2.5 h-2.5 text-white" />}
-                </div>
-                Incluye IGV (18%)
-              </button>
+              {/* Número documento */}
+              <FormInput
+                label="N° de documento"
+                placeholder="Ej: F001-00123"
+                value={form.numeroDocumento}
+                maxLength={20}
+                counter
+                onChange={e => setForm(f =>
+                  ({ ...f, numeroDocumento: e.target.value }))}
+                onBlur={() => setTouchedCaja(t => ({ ...t, numeroDocumento: true }))}
+                error={touchedCaja.numeroDocumento ? erroresCaja.numeroDocumento : null}
+                hint="Opcional"
+              />
 
-              {/* Error */}
+              {/* IGV */}
+              <FormCheckbox
+                label="Incluye IGV (18%)"
+                description="El IGV ya está incluido en el monto ingresado"
+                checked={form.tieneIgv}
+                onChange={v => setForm(f => ({ ...f, tieneIgv: v }))}
+              />
+
               {error && (
-                <p className="text-xs text-red-600 bg-red-50 px-3 py-2
-                  rounded-lg">
+                <p className="text-xs text-red-600 bg-red-50 px-3 py-2 rounded-lg">
                   {error}
                 </p>
               )}
@@ -518,7 +500,7 @@ export default function CajaPage() {
               </button>
               <button
                 onClick={handleGuardar}
-                disabled={guardando || !form.monto || !form.descripcion}
+                disabled={guardando || !cajaValido}
                 className={cn(
                   'flex items-center gap-1.5 px-4 py-2 text-xs font-medium',
                   'rounded-lg transition-colors',
@@ -529,13 +511,9 @@ export default function CajaPage() {
                 )}
               >
                 {guardando ? (
-                  <><Loader2 className="w-3.5 h-3.5 animate-spin" />
-                  Guardando...</>
+                  <><Loader2 className="w-3.5 h-3.5 animate-spin" />Guardando...</>
                 ) : (
-                  <>
-                    <Check className="w-3.5 h-3.5" />
-                    Guardar {form.tipo}
-                  </>
+                  <><Check className="w-3.5 h-3.5" />Guardar {form.tipo}</>
                 )}
               </button>
             </div>
