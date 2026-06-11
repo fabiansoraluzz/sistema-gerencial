@@ -16,6 +16,9 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<Usuario> Usuarios => Set<Usuario>();
     public DbSet<Rol> Roles => Set<Rol>();
     public DbSet<SesionActiva> SesionesActivas => Set<SesionActiva>();
+    public DbSet<MovimientoCaja> MovimientosCaja => Set<MovimientoCaja>();
+    public DbSet<CuentaPorCobrar> CuentasPorCobrar => Set<CuentaPorCobrar>();
+    public DbSet<CuentaPorPagar> CuentasPorPagar => Set<CuentaPorPagar>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

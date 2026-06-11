@@ -90,5 +90,15 @@
         "StatusCode": 401
       }
     ]
+  },
+  {
+    "ContainingType": "SistemaGerencial.Api.Controllers.DashboardController",
+    "Method": "Get",
+    "RelativePath": "api/Dashboard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

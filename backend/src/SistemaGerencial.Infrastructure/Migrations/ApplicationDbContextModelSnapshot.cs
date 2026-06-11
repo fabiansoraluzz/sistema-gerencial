@@ -22,6 +22,126 @@ namespace SistemaGerencial.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("SistemaGerencial.Domain.Entities.CuentaPorCobrar", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("ActualizadoEn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("AreaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Concepto")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("ContactoId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreadoEn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreadoPor")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("EliminadoEn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("EmpresaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateOnly>("FechaEmision")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly>("FechaVencimiento")
+                        .HasColumnType("date");
+
+                    b.Property<long>("MontoCobradoCentimos")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("MontoTotalCentimos")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("NumeroDocumento")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("TieneIgv")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("CuentasPorCobrar");
+                });
+
+            modelBuilder.Entity("SistemaGerencial.Domain.Entities.CuentaPorPagar", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("ActualizadoEn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("AreaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Concepto")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("ContactoId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreadoEn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreadoPor")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("EliminadoEn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("EmpresaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateOnly>("FechaEmision")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly>("FechaVencimiento")
+                        .HasColumnType("date");
+
+                    b.Property<long>("MontoPagadoCentimos")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("MontoTotalCentimos")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("NumeroDocumento")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("TieneIgv")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("CuentasPorPagar");
+                });
+
             modelBuilder.Entity("SistemaGerencial.Domain.Entities.Empresa", b =>
                 {
                     b.Property<Guid>("Id")
@@ -71,6 +191,78 @@ namespace SistemaGerencial.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Empresas");
+                });
+
+            modelBuilder.Entity("SistemaGerencial.Domain.Entities.MovimientoCaja", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("ActualizadoEn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("AreaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("CategoriaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreadoEn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreadoPor")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("CuentaBancariaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("EliminadoEn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("EmpresaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("EstaConciliado")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateOnly>("FechaMovimiento")
+                        .HasColumnType("date");
+
+                    b.Property<Guid?>("GastosRecurrentesId")
+                        .HasColumnType("uuid");
+
+                    b.Property<long>("IgvCentimos")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("MetodoPago")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<long>("MontoCentimos")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("NumeroDocumento")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Referencia")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("TieneIgv")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("MovimientosCaja");
                 });
 
             modelBuilder.Entity("SistemaGerencial.Domain.Entities.Rol", b =>
@@ -220,6 +412,39 @@ namespace SistemaGerencial.Infrastructure.Migrations
                     b.HasIndex("RolId");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("SistemaGerencial.Domain.Entities.CuentaPorCobrar", b =>
+                {
+                    b.HasOne("SistemaGerencial.Domain.Entities.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Empresa");
+                });
+
+            modelBuilder.Entity("SistemaGerencial.Domain.Entities.CuentaPorPagar", b =>
+                {
+                    b.HasOne("SistemaGerencial.Domain.Entities.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Empresa");
+                });
+
+            modelBuilder.Entity("SistemaGerencial.Domain.Entities.MovimientoCaja", b =>
+                {
+                    b.HasOne("SistemaGerencial.Domain.Entities.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Empresa");
                 });
 
             modelBuilder.Entity("SistemaGerencial.Domain.Entities.Rol", b =>

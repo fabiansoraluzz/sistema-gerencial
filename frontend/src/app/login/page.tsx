@@ -3,10 +3,10 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Eye, EyeOff, Loader2 } from 'lucide-react'
+import {
+  Eye, EyeOff, Loader2, Activity,
+  BarChart2, TrendingUp, Bell
+} from 'lucide-react'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -17,9 +17,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
 
   useEffect(() => {
-    if (isAuthenticated) {
-      router.push('/dashboard')
-    }
+    if (isAuthenticated) router.push('/dashboard')
   }, [isAuthenticated, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -29,34 +27,134 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex">
 
-        {/* Logo y título */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-4">
-            <span className="text-white text-2xl font-bold">SG</span>
-          </div>
-          <h1 className="text-2xl font-semibold text-gray-900">
-            Sistema Gerencial
-          </h1>
-          <p className="text-gray-500 text-sm mt-1">
-            Gestión financiera para clínicas y consultorios
-          </p>
+      {/* Panel izquierdo — visual */}
+      <div className="hidden lg:flex lg:w-1/2 bg-[#0F1F3D] flex-col
+        justify-between p-12 relative overflow-hidden">
+
+        {/* Patrón de fondo sutil */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-full h-full"
+            style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+              backgroundSize: '40px 40px'
+            }} />
         </div>
 
-        {/* Formulario */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
-          <h2 className="text-lg font-semibold text-gray-900 mb-6">
-            Iniciar sesión
-          </h2>
+        {/* Círculos decorativos */}
+        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full
+          bg-blue-600 opacity-10" />
+        <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full
+          bg-blue-400 opacity-10" />
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Logo */}
+        <div className="relative z-10 flex items-center gap-3">
+          <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center
+            justify-center">
+            <Activity className="w-6 h-6 text-white" />
+          </div>
+          <div>
+            <p className="text-white font-semibold text-lg leading-none">
+              Sistema Gerencial
+            </p>
+            <p className="text-blue-300 text-xs mt-0.5">
+              para Clínicas y Consultorios
+            </p>
+          </div>
+        </div>
+
+        {/* Contenido central */}
+        <div className="relative z-10 space-y-8">
+          <div className="space-y-4">
+            <h2 className="text-white text-4xl font-bold leading-tight tracking-tight">
+              Tu clínica,<br />bajo control<br />financiero.
+            </h2>
+            <p className="text-blue-200 text-base leading-relaxed max-w-sm">
+              Ve en tiempo real cuánto entra, cuánto sale y
+              cuánto ganas — sin esperar al contador ni abrir
+              un Excel.
+            </p>
+          </div>
+
+          {/* Stats */}
+          <div className="space-y-3">
+            {[
+              {
+                icon: BarChart2,
+                titulo: 'Ganancias y pérdidas por área',
+                desc: 'Sabe exactamente qué servicio de tu clínica genera dinero y cuál no'
+              },
+              {
+                icon: TrendingUp,
+                titulo: 'Proyección de tu caja',
+                desc: 'Anticipa si el próximo mes cierras en positivo o en negativo'
+              },
+              {
+                icon: Bell,
+                titulo: 'Alertas de vencimientos',
+                desc: 'Te avisamos antes de que venza una deuda o un cobro pendiente'
+              },
+            ].map(({ icon: Icon, titulo, desc }) => (
+              <div key={titulo} className="flex items-start gap-3 bg-white/10
+                  rounded-xl p-4 backdrop-blur-sm">
+                <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center
+                    justify-center shrink-0">
+                  <Icon className="w-4 h-4 text-blue-300" />
+                </div>
+                <div>
+                  <p className="text-white text-sm font-semibold">{titulo}</p>
+                  <p className="text-blue-200 text-xs mt-0.5 leading-relaxed">
+                    {desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer izquierdo */}
+        <div className="relative z-10">
+          <p className="text-blue-400 text-xs">
+            © 2026 Sistema Gerencial · Lima, Perú
+          </p>
+        </div>
+      </div>
+
+      {/* Panel derecho — formulario */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center
+        bg-gray-50 p-8">
+        <div className="w-full max-w-sm space-y-8">
+
+          {/* Header mobile */}
+          <div className="lg:hidden flex items-center gap-3 mb-2">
+            <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center
+              justify-center">
+              <Activity className="w-5 h-5 text-white" />
+            </div>
+            <p className="font-semibold text-gray-900">Sistema Gerencial</p>
+          </div>
+
+          {/* Títulos */}
+          <div className="space-y-1">
+            <h1 className="text-2xl font-bold text-gray-900 tracking-tight">
+              Bienvenido de vuelta
+            </h1>
+            <p className="text-gray-500 text-sm">
+              Ingresa tus credenciales para continuar
+            </p>
+          </div>
+
+          {/* Formulario */}
+          <form onSubmit={handleSubmit} className="space-y-5">
 
             {/* Email */}
             <div className="space-y-1.5">
-              <Label htmlFor="email">Correo electrónico</Label>
-              <Input
+              <label htmlFor="email"
+                className="text-sm font-medium text-gray-700">
+                Correo electrónico
+              </label>
+              <input
                 id="email"
                 type="email"
                 placeholder="gerente@tuclinica.com"
@@ -65,14 +163,29 @@ export default function LoginPage() {
                 required
                 autoComplete="email"
                 disabled={isLoading}
+                className="w-full h-11 px-4 rounded-xl border border-gray-200
+                  bg-white text-gray-900 text-sm placeholder:text-gray-400
+                  focus:outline-none focus:ring-2 focus:ring-blue-500
+                  focus:border-transparent transition-all disabled:opacity-50
+                  disabled:cursor-not-allowed"
               />
             </div>
 
             {/* Password */}
             <div className="space-y-1.5">
-              <Label htmlFor="password">Contraseña</Label>
+              <div className="flex items-center justify-between">
+                <label htmlFor="password"
+                  className="text-sm font-medium text-gray-700">
+                  Contraseña
+                </label>
+                <button type="button"
+                  className="text-xs text-blue-600 hover:text-blue-700
+                      font-medium transition-colors">
+                  ¿Olvidaste tu contraseña?
+                </button>
+              </div>
               <div className="relative">
-                <Input
+                <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
                   placeholder="••••••••"
@@ -81,14 +194,18 @@ export default function LoginPage() {
                   required
                   autoComplete="current-password"
                   disabled={isLoading}
-                  className="pr-10"
+                  className="w-full h-11 px-4 pr-11 rounded-xl border
+                    border-gray-200 bg-white text-gray-900 text-sm
+                    placeholder:text-gray-400 focus:outline-none
+                    focus:ring-2 focus:ring-blue-500 focus:border-transparent
+                    transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                   tabIndex={-1}
-                >
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2
+                    text-gray-400 hover:text-gray-600 transition-colors">
                   {showPassword
                     ? <EyeOff className="w-4 h-4" />
                     : <Eye className="w-4 h-4" />}
@@ -98,33 +215,68 @@ export default function LoginPage() {
 
             {/* Error */}
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3">
-                <p className="text-red-600 text-sm">{error}</p>
+              <div className="bg-red-50 border border-red-100 rounded-xl
+                px-4 py-3 flex items-start gap-2.5">
+                <div className="w-4 h-4 rounded-full bg-red-500 flex items-center
+                  justify-center shrink-0 mt-0.5">
+                  <span className="text-white text-xs font-bold">!</span>
+                </div>
+                <p className="text-red-700 text-sm">{error}</p>
               </div>
             )}
 
             {/* Botón */}
-            <Button
+            <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700"
-              disabled={isLoading}
-            >
+              disabled={isLoading || !email || !password}
+              className="w-full h-11 bg-blue-600 hover:bg-blue-700
+                disabled:bg-blue-400 text-white text-sm font-semibold
+                rounded-xl transition-all duration-150 flex items-center
+                justify-center gap-2 shadow-sm shadow-blue-200
+                disabled:cursor-not-allowed disabled:shadow-none">
               {isLoading ? (
                 <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  <Loader2 className="w-4 h-4 animate-spin" />
                   Iniciando sesión...
                 </>
               ) : (
                 'Iniciar sesión'
               )}
-            </Button>
+            </button>
 
           </form>
-        </div>
 
-        <p className="text-center text-xs text-gray-400 mt-6">
-          Sistema de Gestión Gerencial para Clínicas · Lima, Perú
-        </p>
+          {/* Separador */}
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-200" />
+            </div>
+            <div className="relative flex justify-center">
+              <span className="bg-gray-50 px-3 text-xs text-gray-400">
+                ¿Primera vez aquí?
+              </span>
+            </div>
+          </div>
+
+          <button type="button"
+            className="w-full h-11 border border-gray-200 bg-white
+              hover:bg-gray-50 text-gray-700 text-sm font-medium
+              rounded-xl transition-all duration-150">
+            Solicitar acceso para mi clínica
+          </button>
+
+          <p className="text-center text-xs text-gray-400">
+            Al ingresar aceptas nuestros{' '}
+            <span className="text-gray-600 hover:underline cursor-pointer">
+              Términos de uso
+            </span>{' '}
+            y{' '}
+            <span className="text-gray-600 hover:underline cursor-pointer">
+              Política de privacidad
+            </span>
+          </p>
+
+        </div>
       </div>
     </div>
   )
